@@ -4,7 +4,7 @@ import AppNavigator from "./navigation/AppNavigatior.tsx";
 function App(): React.JSX.Element {
 
   return (
-        <AppNavigator/>
+      <AppNavigator/>
   );
 }
 
