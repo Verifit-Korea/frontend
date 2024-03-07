@@ -13,6 +13,11 @@ const AppNavigator = () => {
                     headerShown : false
                 }}/>
             </Stack.Navigator>
+            <Stack.Navigator>
+                <Stack.Screen name="Signup" component={Signup} options={{
+                    headerShown : false
+                }}/>
+            </Stack.Navigator>
         </NavigationContainer>
     );
 };
