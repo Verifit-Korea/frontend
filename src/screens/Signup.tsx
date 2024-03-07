@@ -47,8 +47,18 @@ const SignUp: React.FC = () => {
     }
   };
 
+  const validateEmail = (Email: string) => {
+    // 이메일 유효성 검사 로직
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(Email);
+  };
+
   const handleSignUp = async () => {
-    if (id !== '' && email !== '' && password !== '' && password.length >= 8) {
+    if (!validateEmail(email)) {
+      Alert.alert('유효하지 않은 이메일', '올바른 이메일 주소를 입력하세요.');
+      return;
+    }
+    if (id !== '' && email !== '' && password !== '' && password.length >= 8 && serviceAgreed && privacyAgreed) {
       try {
         // const response = await axios.post('/register', {
         //   id,
@@ -63,7 +73,7 @@ const SignUp: React.FC = () => {
       } catch (error) {
         // 서버 에러 처리
         console.error('회원가입 요청 에러:', error);
-        Alert.alert('회원가입 실패', '서버와의 통신 중 문제 발생');
+        Alert.alert('회원가입 실패', '서버 문제 발생');
       }
     } else {
       if (password.length < 8) {
