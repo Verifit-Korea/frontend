@@ -86,7 +86,9 @@ const SignUp: React.FC = () => {
               }`}
             />
           </TouchableOpacity>
-          <Text className="text-white text-[23.5px]">전체 약관 동의</Text>
+          <Text className="text-white text-[23.5px] font-bold">
+            전체 약관 동의
+          </Text>
         </View>
         <View className="flex-row items-center mt-7 ml-6">
           <TouchableOpacity
@@ -97,7 +99,7 @@ const SignUp: React.FC = () => {
               }`}
             />
           </TouchableOpacity>
-          <Text className="text-white text-[20px]">서비스 이용약관</Text>
+          <Text className="text-white text-[19px]">서비스 이용약관</Text>
         </View>
         <View className="flex-row items-center mt-3.5 px-5">
           <TouchableOpacity
@@ -108,7 +110,7 @@ const SignUp: React.FC = () => {
               }`}
             />
           </TouchableOpacity>
-          <Text className="text-white text-[20px]">
+          <Text className="text-white text-[19px]">
             개인정보 수집 및 이용동의
           </Text>
         </View>
@@ -121,7 +123,7 @@ const SignUp: React.FC = () => {
               }`}
             />
           </TouchableOpacity>
-          <Text className="text-white text-[20px]">
+          <Text className="text-white text-[19px]">
             [선택] 마케팅 수신 동의
           </Text>
         </View>
