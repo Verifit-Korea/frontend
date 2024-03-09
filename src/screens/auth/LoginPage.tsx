@@ -1,23 +1,17 @@
 import React, {useState} from 'react';
 import {
   Alert,
-  Dimensions,
   Text,
-  TextInput,
-  useWindowDimensions,
   View,
   TouchableOpacity,
 } from 'react-native';
-import MainButton from '../components/UI/MainButton.tsx';
-import MainInput from '../components/UI/MainInput.tsx';
-import {AuthService} from '../service/auth/AuthService.tsx';
+import MainInput from '../../components/UI/MainInput.tsx';
+import {AuthService} from '../../service/auth/AuthService.tsx';
 import Layout from './layout.tsx';
-import GradientButton from '../components/UI/GradientButton.tsx';
+import GradientButton from '../../components/UI/GradientButton.tsx';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../navigation/AppNavigatior.tsx';
-
+import { RootStackParamList } from '../../navigation/AppNavigatior.tsx';
 type Props = NativeStackScreenProps<RootStackParamList, 'LoginPage'>;
-
 const LoginPage = ({navigation}: Props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,7 +23,7 @@ const LoginPage = ({navigation}: Props) => {
       await AuthService.login(email, password);
 
       const token = await AuthService.getAuthToken();
-      return goAlert('로그인 성공', `token  : ${token}`);
+      return navigation.navigate('MyPage')
     } catch (e) {
       return goAlert('로그인 실패', `${e}`);
     }
@@ -69,6 +63,7 @@ const LoginPage = ({navigation}: Props) => {
             계정찾기
           </Text>
         </View>
+
 
         <GradientButton
           TextClassName={'text-center text-[#0C0C0C] text-[20px] font-bold'}
