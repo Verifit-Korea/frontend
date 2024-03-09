@@ -65,16 +65,18 @@ const LoginPage = ({navigation}: Props) => {
         </View>
 
 
-        <GradientButton
-          TextClassName={'text-center text-[#0C0C0C] text-[20px] font-bold'}
-          onPress={async () => {
-            if (!(email && password)) {
-              return goAlert('로그인 실패', '님 뭐 입력 안한듯?');
-            }
-            await handleLogin();
-          }}
-          title={'로그인'}
-        />
+          <View className={'mt-[400px]'}>
+          <GradientButton
+            TextClassName={'text-center text-[#0C0C0C] text-[20px] font-bold'}
+            onPress={async () => {
+              if (!(email && password)) {
+                return goAlert('로그인 실패', '님 뭐 입력 안한듯?');
+              }
+              await handleLogin();
+            }}
+            title={'로그인'}
+          />
+        </View>
       </View>
     </Layout>
   );

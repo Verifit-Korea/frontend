@@ -11,7 +11,7 @@ type RootLayoutProps = {
 const Layout = ({ children,headerTitle }: RootLayoutProps) => {
     return (
         <SafeAreaView className={'bg-black h-full w-full'}>
-            <MainHeader title={headerTitle || '마이페이지'} TextClassName={'text-[20px] font-bold'}/>
+            <MainHeader title={headerTitle || '마이 페이지'} TextClassName={'text-[20px] font-bold'}/>
             <ScrollView contentInsetAdjustmentBehavior="automatic">
                 <View>
                     {children}

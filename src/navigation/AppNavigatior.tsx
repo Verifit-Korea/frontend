@@ -5,12 +5,14 @@ import LoginPage from '../screens/auth/LoginPage.tsx';
 import Signup from '../screens/auth/Signup.tsx';
 import MyPage from "../screens/myPage/MyPage.tsx";
 import Setting from "../screens/myPage/Setting.tsx";
+import MyData from "../screens/myPage/MyData.tsx";
 
 export type RootStackParamList = {
   LoginPage: undefined;
   SignupPage: undefined;
   MyPage : undefined;
   Setting : undefined;
+  MyData : undefined;
 }
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -22,6 +24,7 @@ const AppNavigator = () => {
         <Stack.Screen name="SignupPage" component={Signup} options={{headerShown: false}}/>
         <Stack.Screen name="MyPage" component={MyPage} options={{headerShown: false}}/>
         <Stack.Screen name="Setting" component={Setting} options={{headerShown: false}}/>
+        <Stack.Screen name="MyData" component={MyData} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

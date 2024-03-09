@@ -17,7 +17,9 @@ const MyPage = ({navigation}: Props) => {
         <Layout>
 
             {/** 프로필 **/}
-            <TouchableOpacity onPress={() => {}} id={'profile'} className={'flex-row items-center justify-between px-10 pt-10'}>
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('MyData')
+            }} id={'profile'} className={'flex-row items-center justify-between px-10 pt-10'}>
                 <View className={'flex-row space-x-10 items-center'}>
                     <View className={'border-white p-2 bg-mainColor-blue rounded-full '}>
                         <Icon name="person-sharp" size={42} color="#DCFF00"/>
