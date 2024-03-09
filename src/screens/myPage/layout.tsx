@@ -4,13 +4,14 @@ import MainHeader from "../../components/UI/MainHeader.tsx";
 import ScrollView = Animated.ScrollView;
 
 type RootLayoutProps = {
+    headerTitle?: string;
     children: ReactNode;
 };
 
-const Layout = ({ children }: RootLayoutProps) => {
+const Layout = ({ children,headerTitle }: RootLayoutProps) => {
     return (
         <SafeAreaView className={'bg-black h-full w-full'}>
-            <MainHeader title={'마이페이지'} TextClassName={'text-[20px] font-bold'}/>
+            <MainHeader title={headerTitle || '마이페이지'} TextClassName={'text-[20px] font-bold'}/>
             <ScrollView contentInsetAdjustmentBehavior="automatic">
                 <View>
                     {children}

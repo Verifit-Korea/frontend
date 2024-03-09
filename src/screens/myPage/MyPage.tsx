@@ -7,13 +7,19 @@ import Icon from 'react-native-vector-icons/dist/Ionicons'
 import Profile from '../../assets/images/icons/profile.svg'
 import AlertMenu from '../../assets/images/icons/alertMenu.svg'
 import Certification from '../../assets/images/icons/certification.svg'
-const MyPage = () => {
+import {NativeStackScreenProps} from "@react-navigation/native-stack";
+import {RootStackParamList} from "../../navigation/AppNavigatior.tsx";
+
+type Props = NativeStackScreenProps<RootStackParamList, 'MyPage'>;
+
+const MyPage = ({navigation}: Props) => {
     return (
         <Layout>
+
             {/** 프로필 **/}
-            <View id={'profile'} className={'flex-row items-center justify-between px-10 pt-10'}>
+            <TouchableOpacity onPress={() => {}} id={'profile'} className={'flex-row items-center justify-between px-10 pt-10'}>
                 <View className={'flex-row space-x-10 items-center'}>
-                    <View className={'border-white p-2 bg-[#00A9FF] rounded-full '}>
+                    <View className={'border-white p-2 bg-mainColor-blue rounded-full '}>
                         <Icon name="person-sharp" size={42} color="#DCFF00"/>
                     </View>
                     <Text className={'text-white text-[20px] font-bold'}>
@@ -23,7 +29,7 @@ const MyPage = () => {
                 <Text>
                     <Icon name="chevron-forward" size={20} color="#FFFFFF"/>
                 </Text>
-            </View>
+            </TouchableOpacity>
 
             {/** 랭킹 포인트 **/}
             <FlatList
@@ -46,7 +52,7 @@ const MyPage = () => {
 
             {/** 메뉴 리스트 **/}
 
-            <View id={'menu'} className={'px-10 flex space-y-10'}>
+            <View id={'menu'} className={'px-10 flex space-y-10 pt-14'}>
                 <TouchableOpacity
                     onPress={() => {}}
                     className={'flex-row justify-between items-end w-full'}>
@@ -68,7 +74,9 @@ const MyPage = () => {
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => {}}
+                    onPress={() => {
+                        navigation.navigate('Setting')
+                    }}
                     className={'flex-row justify-between items-end w-full'}>
                     <View className={'flex-row items-end space-x-2'}>
                         <AlertMenu width={25}/>
