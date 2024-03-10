@@ -7,12 +7,11 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import MainButton from '../components/UI/MainButton.tsx';
-import MainInput from '../components/UI/MainInput.tsx';
-import GradientButton from '../components/UI/GradientButton.tsx';
-import axios from 'axios';
-import MainHeader from '../components/UI/MainHeader.tsx';
+import MainInput from '../../components/UI/MainInput.tsx';
+import GradientButton from '../../components/UI/GradientButton.tsx';
+import MainHeader from '../../components/UI/MainHeader.tsx';
 import CheckBox from '@react-native-community/checkbox';
+import Layout from "./layout.tsx";
 
 
 const SignUp: React.FC = () => {
@@ -85,9 +84,7 @@ const SignUp: React.FC = () => {
   };
 
   return (
-    <SafeAreaView className={'bg-black h-full w-full'}>
-      <MainHeader title={'회원가입'} TextClassName={'text-[20px] font-bold'} />
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
+      <Layout headerTitle={'회원가입'}>
         <View className="mx-auto w-full px-10 pt-5">
           <TouchableOpacity onPress={handleAllAgreementToggle}>
             <View
@@ -175,8 +172,7 @@ const SignUp: React.FC = () => {
             title={'회원가입'}
           />
         </View>
-      </ScrollView>
-    </SafeAreaView>
+      </Layout>
   );
 };
 

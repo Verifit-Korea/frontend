@@ -11,7 +11,7 @@ interface Props{
 const GradientButton:FC<Props> = ({title,onPress,TextClassName}) => {
     return (
         <View>
-            <TouchableOpacity className={'mt-[400px] flex-row justify-center'} onPress={onPress}>
+            <TouchableOpacity className={'flex-row justify-center'} onPress={onPress}>
                 <LinearGradient
                     className={'pt-2.5 pb-3 w-2/5'}
                     start={{x: 0, y: 0}} end={{x: 1, y: 0}}
