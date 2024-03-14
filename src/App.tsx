@@ -1,10 +1,13 @@
 import React from 'react';
-import AppNavigator from "./navigation/AppNavigatior.tsx";
+import AppNavigator from './navigation/AppNavigatior.tsx';
+import {Provider} from 'react-redux';
+import store from './store';
 
 function App(): React.JSX.Element {
-
   return (
-      <AppNavigator/>
+    <Provider store={store}>
+      <AppNavigator />
+    </Provider>
   );
 }
 
