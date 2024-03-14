@@ -38,7 +38,7 @@ const LoginPage = ({navigation}: Props) => {
             'text-[20px] text-white w-full border-[#888686] border-b pb-1 pt-0 px-0'
           }
           value={email}
-          onChange={setEmail}
+          onChangeText={setEmail}
           placeHolder={'이메일 입력'}
         />
         <Text className={'text-white pt-8 text-5 text-[20px]'}>비밀번호 *</Text>
@@ -47,7 +47,7 @@ const LoginPage = ({navigation}: Props) => {
             'text-[20px] text-white w-full border-[#888686] border-b pb-1 pt-0 px-0'
           }
           value={password}
-          onChange={setPassword}
+          onChangeText={setPassword}
           placeHolder={'비밀번호 입력'}
           secureTextEntry={true}
         />
