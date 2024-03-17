@@ -1,12 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../../store';
-import {
-  setNameError,
-  setEmailError,
-  setPasswordError,
-} from '../../reducers/errorSlice';
 import {
   Alert,
   SafeAreaView,
@@ -35,10 +28,9 @@ const SignUp: React.FC = () => {
   const [privacyAgreed, setPrivacyAgreed] = useState(false);
   const [marketingAgreed, setMarketingAgreed] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-  const dispatch = useDispatch();
-  const {nameError, emailError, passwordError} = useSelector(
-    (state: RootState) => state.error,
-  );
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const goAlert = (title: string, message: string) =>
     Alert.alert(title, message, [], {cancelable: true});
@@ -73,22 +65,16 @@ const SignUp: React.FC = () => {
   const handleNameChange = (text: string) => {
     setName(text);
     if (name.length < 2 || name.length > 10) {
-      dispatch(setNameError('닉네임은 2자 이상, 10자 이하이어야 합니다.'));
-    } else if (!/^[a-zA-Z0-9._-]+$/.test(name.trim().toLowerCase())) {
-      dispatch(
-        setNameError(
-          '닉네임은 영문 대소문자, 숫자, _, ., - 만 사용 가능합니다.',
-        ),
-      );
+      setNameError('닉네임은 2자 이상, 10자 이하이어야 합니다.');
+    } else if (!/^[a-zA-Z0-9._-]+$/.test(name.toLowerCase())) {
+      setNameError('닉네임은 영문 대소문자, 숫자, _, ., - 만 사용 가능합니다.');
     } else if (
       name.toLowerCase().includes('verifit') ||
       name.includes('베리핏')
     ) {
-      dispatch(
-        setNameError('닉네임은 "verifit" 또는 "베리핏"을 포함할 수 없습니다.'),
-      );
+      setNameError('닉네임은 "verifit" 또는 "베리핏"을 포함할 수 없습니다.');
     } else {
-      dispatch(setNameError(''));
+      setNameError('');
     }
   };
 
@@ -96,30 +82,31 @@ const SignUp: React.FC = () => {
     setEmail(text);
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) {
-      dispatch(setEmailError('이메일을 올바르게 작성해 주세요'));
+      setEmailError('이메일을 올바르게 작성해 주세요');
     } else {
-      dispatch(setEmailError(''));
+      setEmailError('');
     }
   };
 
   const handlePasswordChange = (text: string) => {
     setPassword(text);
-    const passwordRegex = /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&()-_+=]{10,}$/;
+    const passwordRegex =
+      /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&()-_+=]{10,}$/;
     if (!passwordRegex.test(password)) {
-      dispatch(
-        setPasswordError(
-          '패스워드는 10자 이상, 영문, 숫자, 특수문자 중 2개 이상 조합을 만족해야 합니다',
-        ),
+      setPasswordError(
+        '패스워드는 10자 이상, 영문, 숫자, 특수문자 중 2개 이상 조합을 만족해야 합니다',
       );
     } else {
-      dispatch(setPasswordError(''));
+      setPasswordError('');
     }
   };
-
-  const isSignUpDisabled = !!nameError || !!emailError || !!passwordError;
+  const isSetDisabled = !!nameError || !!emailError || !!passwordError;
 
   const handleSignUp = async () => {
-    if (isSignUpDisabled) {
+    if (name === '' || email === '' || password === '') {
+      return goAlert('입력값 오류', '필수 항목은 모두 입력하셔야 합니다.');
+    }
+    if (isSetDisabled) {
       return goAlert('입력값 오류', '입력이 잘못되었습니다');
     }
     if (!serviceAgreed || !privacyAgreed) {
@@ -229,9 +216,7 @@ const SignUp: React.FC = () => {
           onChangeText={handleEmailChange}
           placeHolder={'이메일 입력'}
         />
-        <Text style={{color: 'red'}}>
-          {emailError}
-        </Text>
+        <Text style={{color: 'red'}}>{emailError}</Text>
         <Text className={'text-white pt-5 text-5 text-[20px]'}>비밀번호 *</Text>
         <View className="relative">
           <MainInput
@@ -243,8 +228,11 @@ const SignUp: React.FC = () => {
             placeHolder={'비밀번호 입력'}
             secureTextEntry={!isPasswordVisible}
           />
+          <Text style={{color: 'red'}}>{passwordError}</Text>
           <TouchableOpacity
-            className="absolute top-0 right-0 bottom-8 px-3 flex items-center justify-center"
+            className={
+              'absolute top-0 right-0 px-3 flex items-center justify-center'
+            }
             onPress={passwordVisibility}>
             <Icon
               name={isPasswordVisible ? 'eye-off-outline' : 'eye-outline'}
@@ -252,15 +240,12 @@ const SignUp: React.FC = () => {
               color="white"
             />
           </TouchableOpacity>
-          <Text style={{color: 'red'}}>
-            {passwordError}
-          </Text>
         </View>
         <View className={'mt-[50px]'}>
           <GradientButton
             TextClassName={'text-center text-[#0C0C0C] text-[20px] font-bold'}
             onPress={handleSignUp}
-            disabled={isSignUpDisabled}
+            disabled={isSetDisabled}
             title={'회원가입'}
           />
         </View>
