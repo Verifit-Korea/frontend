@@ -41,7 +41,7 @@ const MyData = () => {
             <Text className={'text-white text-center text-[20px] font-bold pt-1'}>닉네임</Text>
 
             <View className={'px-10 pt-14'}>
-                <MainInput onChange={(text) => {
+                <MainInput onChangeText={(text) => {
                     setUserData(prevState => ({
                         ...prevState,
                         nickName: text
@@ -51,7 +51,7 @@ const MyData = () => {
                    placeHolder={'닉네임'}
                 />
 
-                <MainInput onChange={(text) => {
+                <MainInput onChangeText={(text) => {
                     setUserData(prevState => ({
                         ...prevState,
                         email: text
