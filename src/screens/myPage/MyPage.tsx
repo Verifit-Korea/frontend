@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {FlatList, Text, TouchableOpacity, View} from "react-native";
 import Layout from "./layout.tsx";
 
@@ -9,10 +9,33 @@ import AlertMenu from '../../assets/images/icons/alertMenu.svg'
 import Certification from '../../assets/images/icons/certification.svg'
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigatior.tsx";
+import useAuthStore from "../../store/authStore.ts";
 
 type Props = NativeStackScreenProps<RootStackParamList, 'MyPage'>;
 
 const MyPage = ({navigation}: Props) => {
+
+    const authStore = useAuthStore;
+    const [nickname, setNickname] = useState(authStore.getState().nickname);
+    const [userData , setUserData] = useState({
+        rank : authStore.getState().rank,
+        todayPoint : authStore.getState().todayPoint,
+        totalPoint : authStore.getState().totalPoint,
+    })
+
+    useEffect(() => {
+        return authStore.subscribe(
+            (newState) => {
+                setNickname(newState.nickname);
+                setUserData({
+                    rank: newState.rank,
+                    todayPoint: newState.todayPoint,
+                    totalPoint: newState.totalPoint
+                })
+            }
+        );
+    }, []);
+
     return (
         <Layout>
 
@@ -25,7 +48,7 @@ const MyPage = ({navigation}: Props) => {
                         <Icon name="person-sharp" size={42} color="#DCFF00"/>
                     </View>
                     <Text className={'text-white text-[20px] font-bold'}>
-                        닉네임
+                         {nickname}
                     </Text>
                 </View>
                 <Text>
@@ -39,9 +62,9 @@ const MyPage = ({navigation}: Props) => {
                 className={'mx-auto pt-7'}
                 horizontal={true}
                 data={[
-                    {key: '랭킹', value: '3rd'},
-                    {key: '일일 포인트', value: '50p'},
-                    {key: '누적 포인트', value: '300p'},
+                    {key: '랭킹', value: userData.rank},
+                    {key: '일일 포인트', value: `${userData.todayPoint}p`},
+                    {key: '누적 포인트', value: `${userData.totalPoint}p`},
                 ]}
                 renderItem={({item}) => (
                     <View className={'flex m-6'}>
@@ -87,8 +110,6 @@ const MyPage = ({navigation}: Props) => {
                     <Icon name="chevron-forward" size={25} color="#FFFFFF"/>
                 </TouchableOpacity>
             </View>
-
-
         </Layout>
     );
 };

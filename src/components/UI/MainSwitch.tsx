@@ -28,7 +28,7 @@ const MainSwitch:FC<Props> = ({value,onChange,disabled}) => {
                 }}
                 innerCircleStyle={{
                     padding : 0,
-                    marginLeft : -3,
+                    marginLeft : -1,
                     borderWidth :value? 0: 2,
                     borderColor : value? '#DCFF00' : 'gray'
                 }}

@@ -12,18 +12,25 @@ import GradientButton from '../../components/UI/GradientButton.tsx';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/AppNavigatior.tsx';
 type Props = NativeStackScreenProps<RootStackParamList, 'LoginPage'>;
+
+export const goAlert = (title: string, message: string) =>
+    Alert.alert(title, message, [], {cancelable: true});
+
 const LoginPage = ({navigation}: Props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const goAlert = (title: string, message: string) =>
-    Alert.alert(title, message, [], {cancelable: true});
 
   const handleLogin = async () => {
     try {
       await AuthService.login(email, password);
 
       const token = await AuthService.getAuthToken();
-      return navigation.navigate('MyPage')
+      if(token){
+        await AuthService.getUserInfo(token);
+        return navigation.navigate('MyPage')
+      }
+      return goAlert('로그인 실패', `로그인 정보 불일치`);
+
     } catch (e) {
       return goAlert('로그인 실패', `${e}`);
     }
