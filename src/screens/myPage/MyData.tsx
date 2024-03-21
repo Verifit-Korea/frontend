@@ -7,16 +7,18 @@ import Plus from '../../assets/images/icons/plus.svg'
 import Icon from 'react-native-vector-icons/dist/Ionicons'
 import MaskedView from "@react-native-masked-view/masked-view";
 import MainInput from "../../components/UI/MainInput.tsx";
-import MainButton from "../../components/UI/MainButton.tsx";
 import GradientButton from "../../components/UI/GradientButton.tsx";
+import useAuthStore from "../../store/authStore.ts";
+import {NativeStackScreenProps} from "@react-navigation/native-stack";
+import {RootStackParamList} from "../../navigation/AppNavigatior.tsx";
+type Props = NativeStackScreenProps<RootStackParamList, 'MyPage'>;
 
-const MyData = () => {
-
+const MyData = ({navigation}: Props) => {
+    const authStore = useAuthStore.getState();
     const [userDate, setUserData] = useState({
-        nickName: '',
-        email: '',
+        nickName: authStore.nickname,
+        email: authStore.email,
     })
-
     return (
         <Layout headerTitle={'내 정보'}>
             <View className={'mx-auto pt-14'}>
@@ -61,7 +63,12 @@ const MyData = () => {
                    placeHolder={'이메일'}/>
 
                 <View className={'mt-[280px]'}>
-                <GradientButton TextClassName={'text-center text-[#0C0C0C] text-[20px] font-bold'} title={'변경 완료'} onPress={() => {}}/>
+                <GradientButton TextClassName={'text-center text-[#0C0C0C] text-[20px] font-bold'} title={'변경 완료'} onPress={() => {
+                    authStore.setEmail(userDate.email)
+                    authStore.setNickname(userDate.nickName)
+
+                    navigation.navigate('MyPage')
+                }}/>
                 </View>
             </View>
         </Layout>

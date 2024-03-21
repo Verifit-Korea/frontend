@@ -3,17 +3,30 @@ import {Text, TouchableOpacity, View} from "react-native";
 import Layout from "./layout.tsx";
 import MainSwitch from "../../components/UI/MainSwitch.tsx";
 import {Switch} from "react-native-switch";
+import useAuthStore from "../../store/authStore.ts";
 const Setting = () => {
-    const [allAgree , setAllAgree] = useState(false);
+    const authStore = useAuthStore.getState();
+
+    console.log(authStore.alert)
+    const [allAgree , setAllAgree] = useState(
+        authStore.alert.certification &&
+        authStore.alert.auction &&
+        authStore.alert.event &&
+        authStore.alert.notice
+    );
     const [alertAgree , setAlertAgree] = useState({
-        certification : false,
-        Auction : false,
-        event : false,
-        notice : false,
+        certification : authStore.alert.certification,
+        Auction :  authStore.alert.auction,
+        event :  authStore.alert.event,
+        notice :  authStore.alert.notice,
     })
 
     const handleAllAgree = () => {
         if(allAgree){
+            authStore.setCertification(false)
+            authStore.setAuction(false)
+            authStore.setEvent(false)
+            authStore.setNotice(false)
             return setAlertAgree( {
                 certification: false,
                 Auction : false,
@@ -21,6 +34,10 @@ const Setting = () => {
                 notice : false
             })
         }
+        authStore.setCertification(true)
+        authStore.setAuction(true)
+        authStore.setEvent(true)
+        authStore.setNotice(true)
         setAlertAgree( {
             certification: true,
             Auction : true,
@@ -59,6 +76,7 @@ const Setting = () => {
                                     ...prevState,
                                     certification: !prevState.certification
                                 };
+                                authStore.setCertification(!prevState.certification)
                                 checkIsAllAgree(updatedState);
                                 return updatedState;
                             });
@@ -77,6 +95,7 @@ const Setting = () => {
                                     ...prevState,
                                     Auction: !prevState.Auction
                                 };
+                                authStore.setAuction(!prevState.Auction)
                                 checkIsAllAgree(updatedState);
                                 return updatedState;
                             });
@@ -95,6 +114,7 @@ const Setting = () => {
                                     ...prevState,
                                     event: !prevState.event
                                 };
+                                authStore.setEvent(!prevState.event)
                                 checkIsAllAgree(updatedState);
                                 return updatedState;
                             });
@@ -113,6 +133,7 @@ const Setting = () => {
                                     ...prevState,
                                     notice: !prevState.notice
                                 };
+                                authStore.setNotice(!prevState.notice)
                                 checkIsAllAgree(updatedState);
                                 return updatedState;
                             });
