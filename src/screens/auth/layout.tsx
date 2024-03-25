@@ -2,6 +2,7 @@ import React, {ReactNode} from 'react';
 import {Animated, SafeAreaView, View} from "react-native";
 import MainHeader from "../../components/UI/MainHeader.tsx";
 import ScrollView = Animated.ScrollView;
+import BottomSheet from "../../components/UI/BottomSheet.tsx";
 
 type RootLayoutProps = {
     header?: boolean;
@@ -18,6 +19,7 @@ const Layout = ({ header = true, children,headerTitle }: RootLayoutProps ) => {
                     {children}
                 </View>
             </ScrollView>
+
         </SafeAreaView>
     );
 };

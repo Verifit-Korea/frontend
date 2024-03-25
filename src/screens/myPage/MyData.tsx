@@ -11,7 +11,7 @@ import GradientButton from "../../components/UI/GradientButton.tsx";
 import useAuthStore from "../../store/authStore.ts";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigatior.tsx";
-type Props = NativeStackScreenProps<RootStackParamList, 'MyPage'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'MyData'>;
 
 const MyData = ({navigation}: Props) => {
     const authStore = useAuthStore.getState();
