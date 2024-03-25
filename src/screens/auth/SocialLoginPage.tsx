@@ -7,6 +7,7 @@ import VerifitLogoNeon from "../../assets/images/logo/VerifitLogoNeon.svg"
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigatior.tsx";
 import {fontSize} from "nativewind/dist/tailwind/native/font-size";
+import BottomSheet from "../../components/UI/BottomSheet.tsx";
 type Props = NativeStackScreenProps<RootStackParamList, 'SocialPage'>;
 const SocialLoginPage = ({navigation} : Props) => {
     return (
@@ -57,6 +58,7 @@ const SocialLoginPage = ({navigation} : Props) => {
                         resizeMode="cover"
                     />
                 </TouchableOpacity>
+
 
                 <View style={{paddingTop : 54, flex: 1, flexDirection : "row" , alignItems : "center"}}>
                     <TouchableOpacity onPress={() => navigation.navigate('SignupPage')}>
