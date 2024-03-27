@@ -25,6 +25,7 @@ const useAuthStore: StoreApi<IAuthStore> = create<IAuthStore>((set) => ({
     rank : undefined,
     todayPoint : undefined,
     totalPoint : undefined,
+    monthPoint : undefined,
     setCertification: (value) => set((state) => ({ ...state, alert: { ...state.alert, certification: value } })),
     setAuction: (value) => set((state) => ({ ...state, alert: { ...state.alert, auction: value } })),
     setEvent: (value) => set((state) => ({ ...state, alert: { ...state.alert, event: value } })),
