@@ -2,12 +2,13 @@ import React from 'react';
 import MyPage from "./myPage/MyPage.tsx";
 import Setting from "./myPage/Setting.tsx";
 import {createMaterialBottomTabNavigator} from "@react-navigation/material-bottom-tabs";
-import SocialLoginPage from "./auth/SocialLoginPage.tsx";
 import HomeIcon from '../assets/images/icons/homeIcon.svg'
 import Rank from '../assets/images/icons/rank.svg'
 import CertificationMenu from '../assets/images/icons/certificationMenu.svg'
 import Auction from '../assets/images/icons/auction.svg'
 import SettingIcon from '../assets/images/icons/settingIcon.svg'
+import MainPage from "./main/MainPage.tsx";
+import Ranking from "./point/PointRanking.tsx";
 const Home = () => {
     const Tab = createMaterialBottomTabNavigator();
     return (
@@ -20,18 +21,20 @@ const Home = () => {
                     position: 'absolute',
                 }}
                 barStyle={{
-                    backgroundColor: 'transparent',
+                    backgroundColor: 'rgba(255, 255, 255, 0.5)',
                     position: 'absolute',
+                    marginBottom : 20,
+                    borderRadius : 20
             }}>
                 {/*@ts-ignore*/}
-                <Tab.Screen name="MyPage" component={MyPage} options={{
+                <Tab.Screen name="MainPage" component={MainPage} options={{
                     tabBarLabel: '홈',
                     tabBarIcon: ({ color }) => (
                         <HomeIcon width={42}/>
                     )
                 }} />
                 {/*@ts-ignore*/}
-                <Tab.Screen name="랭킹" component={SocialLoginPage} options={{
+                <Tab.Screen name="랭킹" component={Ranking} options={{
                     tabBarLabel: '랭킹',
                     tabBarIcon: ({ color }) => (
                         <Rank width={42}/>
@@ -49,7 +52,8 @@ const Home = () => {
                         <Auction width={42}/>
                     )
                 }} />
-                <Tab.Screen name="설정" component={Setting} options={{
+                {/*@ts-ignore*/}
+                <Tab.Screen name="설정" component={MyPage} options={{
                     tabBarLabel: '설정',
                     tabBarIcon: ({ color }) => (
                         <SettingIcon width={42}/>

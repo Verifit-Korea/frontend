@@ -55,7 +55,7 @@ const Setting = () => {
     };
 
     return (
-        <Layout headerTitle={'알림 설정'}>
+        <Layout leftButton={true} headerTitle={'알림 설정'}>
             <View className={'px-10'}>
                 <Text className={'text-white text-right text-[12px]'}>전체선택</Text>
 

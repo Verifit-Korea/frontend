@@ -59,7 +59,9 @@ export class AuthService {
                     },
                     rank : 1,
                     todayPoint : 10,
-                    totalPoint : 30
+                    totalPoint : 30,
+                    seasonPoint : 550,
+                    relayPhoto : 7
                 }
                 const userStore = useAuthStore.getState();
                 userStore.set(userData)

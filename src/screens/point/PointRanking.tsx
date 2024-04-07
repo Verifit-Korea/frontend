@@ -8,13 +8,12 @@ import {
   ListRenderItemInfo,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import useAuthStore, {IAuthStore} from './authStore';
 import axios from 'axios';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../navigation/AppNavigatior';
 import Layout from './layout.tsx';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'PointRanking'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'Ranking'>;
 
 interface RankingEntry {
   rank: number;
@@ -66,7 +65,7 @@ const RankingScreen: React.FC<Props> = () => {
         renderItem={renderItem}
         keyExtractor={item => item.rank.toString()}
         ListHeaderComponent={<Text style={styles.header}>총 포인트 랭킹</Text>}
-        // scrollEnabled={false} 
+        // scrollEnabled={false}
       />
     </Layout>
   );
@@ -94,7 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#0000FF',
     borderRadius: 50,
     marginRight: 10,
-    width: 26, 
+    width: 26,
     height: 26,
     justifyContent: 'center',
     alignItems: 'center',
