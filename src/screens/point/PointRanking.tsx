@@ -2,13 +2,12 @@
 import React, {useState, useEffect} from 'react';
 import {View, Alert, Text, StyleSheet, FlatList} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import useAuthStore, {IAuthStore} from './authStore';
 import axios from 'axios';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../navigation/AppNavigatior';
 import Layout from './layout.tsx';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'PointRanking'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'Ranking'>;
 
 interface User {
   id: string;

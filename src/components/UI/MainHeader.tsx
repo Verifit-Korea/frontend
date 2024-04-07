@@ -3,24 +3,27 @@ import {Text, TouchableOpacity, View} from "react-native"
 // @ts-ignore
 import Icon from 'react-native-vector-icons/dist/Ionicons'
 import {useNavigation} from "@react-navigation/native";
-interface Props{
+
+interface Props {
     title: string,
-    headerClassName? :string
-    TextClassName? : string
-    leftIconOnClick? : () => void
+    headerClassName?: string
+    TextClassName?: string
+    leftIconOnClick?: boolean
 }
-const MainHeader:FC<Props> = ({title, headerClassName,TextClassName,leftIconOnClick}) => {
+
+const MainHeader: FC<Props> = ({title, headerClassName, TextClassName, leftIconOnClick}) => {
 
     const navigation = useNavigation()
 
     return (
         <View className={'flex-row items-center w-full py-[25px]'}>
-                <TouchableOpacity className={`${headerClassName} absolute left-3 z-10 border-white`} onPress={leftIconOnClick ? leftIconOnClick :() =>{
+            {leftIconOnClick &&
+                <TouchableOpacity className={`${headerClassName} absolute left-3 z-10 border-white`} onPress={() => {
                     navigation.goBack()
                 }}>
-                    <Text className={`${TextClassName} text-white text-center w-full`}><Icon name="chevron-back-outline" size={20} color="#FFFFFF" /></Text>
-                </TouchableOpacity>
-
+                    <Text className={`${TextClassName} text-white text-center w-full`}><Icon name="chevron-back-outline"
+                                                                                             size={20} color="#FFFFFF"/></Text>
+                </TouchableOpacity>}
             <Text className={`${TextClassName} text-white text-center w-full`}>{title}</Text>
         </View>
     );

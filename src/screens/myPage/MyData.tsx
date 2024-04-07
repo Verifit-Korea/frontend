@@ -20,7 +20,7 @@ const MyData = ({navigation}: Props) => {
         email: authStore.email,
     })
     return (
-        <Layout headerTitle={'내 정보'}>
+        <Layout leftButton={true} headerTitle={'내 정보'}>
             <View className={'mx-auto pt-14'}>
                 <MaskedView
                     style={{height: 105, width: 100}}

@@ -6,12 +6,13 @@ import ScrollView = Animated.ScrollView;
 type RootLayoutProps = {
     headerTitle?: string;
     children: ReactNode;
+    leftButton?: boolean;
 };
 
-const Layout = ({ children,headerTitle }: RootLayoutProps) => {
+const Layout = ({ children,headerTitle,leftButton }: RootLayoutProps) => {
     return (
         <SafeAreaView className={'bg-black h-full w-full'}>
-            <MainHeader title={headerTitle || '마이 페이지'} TextClassName={'text-[20px] font-bold'}/>
+            <MainHeader leftIconOnClick={leftButton} title={headerTitle || '마이 페이지'} TextClassName={'text-[20px] font-bold'}/>
             <ScrollView contentInsetAdjustmentBehavior="automatic">
                 <View>
                     {children}

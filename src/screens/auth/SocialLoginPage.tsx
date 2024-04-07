@@ -6,8 +6,6 @@ import BgBlackLogo from "../../assets/images/logo/bgBlackLogo.svg"
 import VerifitLogoNeon from "../../assets/images/logo/VerifitLogoNeon.svg"
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigatior.tsx";
-import {fontSize} from "nativewind/dist/tailwind/native/font-size";
-import BottomSheet from "../../components/UI/BottomSheet.tsx";
 type Props = NativeStackScreenProps<RootStackParamList, 'SocialPage'>;
 const SocialLoginPage = ({navigation} : Props) => {
     return (
