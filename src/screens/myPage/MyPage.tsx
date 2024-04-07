@@ -38,7 +38,6 @@ const MyPage = ({navigation}: Props) => {
 
     return (
         <Layout>
-
             {/** 프로필 **/}
             <TouchableOpacity onPress={() => {
                 navigation.navigate('MyData')

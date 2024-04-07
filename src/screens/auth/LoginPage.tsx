@@ -27,7 +27,10 @@ const LoginPage = ({navigation}: Props) => {
       const token = await AuthService.getAuthToken();
       if(token){
         await AuthService.getUserInfo(token);
-        return navigation.navigate('MyPage')
+        return navigation.reset({
+          index: 0,
+          routes: [{ name: 'Home' }],
+        });
       }
       return goAlert('로그인 실패', `로그인 정보 불일치`);
 
