@@ -5,6 +5,7 @@ export interface AuthInterface {
     rank : number | undefined,
     todayPoint: number | undefined,
     totalPoint : number | undefined,
+    monthPoint : number | undefined,
     alert : {
         certification : boolean
         auction : boolean
