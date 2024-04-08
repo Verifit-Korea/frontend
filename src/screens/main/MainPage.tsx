@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Image, ScrollView, StyleSheet, Text, View} from "react-native";
+import {Image, ScrollView, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import Layout from "./layout.tsx";
 import {Colors} from "react-native/Libraries/NewAppScreen";
 import {DateFormatter} from "../../util/formatter.ts";
@@ -8,14 +8,17 @@ import Timer from "../../components/UI/Timer.tsx";
 import Guide from "../../assets/images/icons/guide.svg"
 import {TipList} from "../../__mocks__/Tip.ts";
 import {getRandomNumber} from "../../util/RandomNumber.ts";
-import {useFocusEffect} from "@react-navigation/native";
+import {useFocusEffect, useNavigation} from "@react-navigation/native";
 import useAuthStore from "../../store/authStore.ts";
 import RightArrow from '../../assets/images/icons/rightArrow.svg'
-const MainPage = () => {
+import {NativeStackScreenProps} from "@react-navigation/native-stack";
+import {RootStackParamList} from "../../navigation/AppNavigatior.tsx";
+
+
+type Props = NativeStackScreenProps<RootStackParamList, 'MainPage'>;
+const MainPage = ({navigation}: Props) => {
     const authStore = useAuthStore.getState();
-
     const [tip ,setTip] = useState('')
-
     useFocusEffect(() => {
         const ranNum = getRandomNumber(0, TipList.length);
         setTip(TipList[ranNum]);
@@ -32,7 +35,11 @@ const MainPage = () => {
                     <Text style={[styles.text, {fontSize: 35  , fontWeight: "900"}]}>
                         {"오늘은\n" + "디저트 x 인가요?"}
                     </Text>
-                    <RightArrow style={{marginBottom : 7}} width={35} height={35}/>
+                    <TouchableOpacity onPress={() => {
+                        navigation. navigate('NegativeCheck')
+                    }}>
+                        <RightArrow style={{marginBottom : 7}} width={35} height={35}/>
+                    </TouchableOpacity>
                 </View>
                 <Timer/>
                 <View style={styles.mainContainer}>

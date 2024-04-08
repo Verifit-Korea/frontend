@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {Animated, SafeAreaView, View} from "react-native";
-import MainHeader from "../../components/UI/MainHeader.tsx";
+import MainHeader from "../../components/UI/headers/MainHeader.tsx";
 import ScrollView = Animated.ScrollView;
 
 type RootLayoutProps = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, View, StyleSheet} from 'react-native';
 
-import MainHeader from '../../components/UI/MainHeader.tsx';
+import MainHeader from '../../components/UI/headers/MainHeader.tsx';
 
 type RootLayoutProps = {
   headerTitle?: string;
@@ -13,7 +13,7 @@ const Layout = ({children, headerTitle}: RootLayoutProps) => {
     <SafeAreaView style={styles.safeArea}>
       <MainHeader
         title={headerTitle || '포인트'}
-        TextClassName="text-[20px] font-bold text-black" 
+        TextClassName="text-[20px] font-bold text-black"
       />
       <ScrollView
         style={styles.scrollView}
