@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
-import MainHeader from '../../components/UI/MainHeader.tsx';
+import MainHeader from '../../components/UI/headers/MainHeader.tsx';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import LinearGradient from 'react-native-linear-gradient';
 

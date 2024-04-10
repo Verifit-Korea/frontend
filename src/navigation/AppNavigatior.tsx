@@ -10,6 +10,7 @@ import SocialLoginPage from '../screens/auth/SocialLoginPage.tsx';
 import Home from '../screens/Home.tsx';
 import Point from '../screens/point/Point.tsx';
 import Ranking from '../screens/point/PointRanking.tsx';
+import NegativeCheck from "../screens/main/checkList/NegativeCheck.tsx";
 
 export type RootStackParamList = {
   SocialPage: undefined;
@@ -21,10 +22,13 @@ export type RootStackParamList = {
   Home: undefined;
   Point: undefined;
   Ranking: undefined;
+  NegativeCheck : undefined;
+  MainPage : undefined;
 };
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SocialPage">
@@ -72,6 +76,11 @@ const AppNavigator = () => {
           name="Ranking"
           component={Ranking}
           options={{headerShown: false}}
+        />
+        <Stack.Screen
+            name="NegativeCheck"
+            component={NegativeCheck}
+            options={{headerShown: false, }}
         />
       </Stack.Navigator>
     </NavigationContainer>

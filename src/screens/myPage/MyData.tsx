@@ -7,7 +7,7 @@ import Plus from '../../assets/images/icons/plus.svg'
 import Icon from 'react-native-vector-icons/dist/Ionicons'
 import MaskedView from "@react-native-masked-view/masked-view";
 import MainInput from "../../components/UI/MainInput.tsx";
-import GradientButton from "../../components/UI/GradientButton.tsx";
+import GradientButton from "../../components/UI/buttons/GradientButton.tsx";
 import useAuthStore from "../../store/authStore.ts";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigatior.tsx";

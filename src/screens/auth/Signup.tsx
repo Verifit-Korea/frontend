@@ -10,7 +10,7 @@ import {
   View,
 } from 'react-native';
 import MainInput from '../../components/UI/MainInput.tsx';
-import GradientButton from '../../components/UI/GradientButton.tsx';
+import GradientButton from '../../components/UI/buttons/GradientButton.tsx';
 import CheckBox from '@react-native-community/checkbox';
 import Layout from './layout.tsx';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';

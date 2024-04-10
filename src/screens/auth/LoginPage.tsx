@@ -8,7 +8,7 @@ import {
 import MainInput from '../../components/UI/MainInput.tsx';
 import {AuthService} from '../../service/auth/AuthService.tsx';
 import Layout from './layout.tsx';
-import GradientButton from '../../components/UI/GradientButton.tsx';
+import GradientButton from '../../components/UI/buttons/GradientButton.tsx';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../navigation/AppNavigatior.tsx';
 type Props = NativeStackScreenProps<RootStackParamList, 'LoginPage'>;

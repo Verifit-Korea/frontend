@@ -1,8 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, FC} from 'react';
 import { View, Text, StyleSheet } from "react-native";
 import TimerIcon from "../../assets/images/icons/timerIcon.svg"
+import BlackTimer from "../../assets/images/icons/blackTimer.svg"
 import {Colors} from "react-native/Libraries/NewAppScreen";
-const Timer = () => {
+interface Props {
+    textStyle? : any
+    iconSize?: number
+    BlackIcon? : boolean
+    containerStyle? :any
+}
+const Timer:FC<Props> = ({textStyle,iconSize,BlackIcon,containerStyle}) => {
     const [remainingTime, setRemainingTime] = useState(calculateRemainingTime());
 
     useEffect(() => {
@@ -27,9 +34,13 @@ const Timer = () => {
     }
 
     return (
-        <View style={styles.container}>
-            <TimerIcon width={16} />
-            <Text style={styles.timerText}>
+        <View style={[styles.container,containerStyle]}>
+            {BlackIcon ?
+                <BlackTimer height={iconSize || 16} width={iconSize || 16} />
+                :
+                <TimerIcon height={iconSize || 16} width={iconSize || 16} />}
+
+            <Text style={[styles.timerText,textStyle]}>
                 {`${remainingTime.hours.toString().padStart(2, '0')} : ${remainingTime.minutes.toString().padStart(2, '0')} : ${remainingTime.seconds.toString().padStart(2, '0')}`}
             </Text>
         </View>
