@@ -17,9 +17,12 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import axios from 'axios';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../navigation/AppNavigatior.tsx';
+import SignupLoading from './SignupLoading';
+import CustomAlert from '../../components/UI/CustomAlert.tsx';
+
 type Props = NativeStackScreenProps<RootStackParamList, 'SignupPage'>;
 
-const SignUp: React.FC = () => {
+const SignUp: React.FC = ({navigation}: Props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,9 +34,17 @@ const SignUp: React.FC = () => {
   const [nameError, setNameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [alertMessage, setAlertMessage] = useState('');
 
-  const goAlert = (title: string, message: string) =>
-    Alert.alert(title, message, [], {cancelable: true});
+  const goAlert = (message: string) => {
+    setAlertMessage(message);
+    setAlertVisible(true);
+  };
+
+  // const goAlert = (title: string, message: string) =>
+  //   Alert.alert(title, message, [], {cancelable: true});
 
   const passwordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -104,27 +115,33 @@ const SignUp: React.FC = () => {
 
   const handleSignUp = async () => {
     if (name === '' || email === '' || password === '') {
-      return goAlert('입력값 오류', '필수 항목은 모두 입력하셔야 합니다.');
+      return goAlert('필수 항목은 모두 입력하셔야 합니다.');
     }
     if (isSetDisabled) {
-      return goAlert('입력값 오류', '입력이 잘못되었습니다');
+      return goAlert('입력이 잘못되었습니다');
     }
     if (!serviceAgreed || !privacyAgreed) {
-      return goAlert(
-        '약관 동의 오류',
-        '필수 약관에 동의해야 회원가입이 가능합니다.',
-      );
+      return goAlert('필수 약관 동의를 해주세요');
     }
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      navigation.navigate('LoginPage');
+    }, 2000);
 
     // try {
     //   const response = await axios.post('/register', {
-    //     name,
-    //     email,
-    //     password,
+    //     nickname: name,
+    //     email: email,
+    //     password: password,
     //   });
     //   if (response.status === 200) {
     //     console.log('성공');
-    //     return navigation.navigate('LoginPage');
+    //     setLoading(true);
+    //     setTimeout(() => {
+    //       setLoading(false);
+    //       navigation.navigate('LoginPage');
+    //     }, 2000);
     //   } else {
     //     console.log('실패');
     //   }
@@ -137,6 +154,12 @@ const SignUp: React.FC = () => {
 
   return (
     <Layout headerTitle={'회원가입'}>
+      <SignupLoading visible={loading} />
+      <CustomAlert
+        message={alertMessage}
+        visible={alertVisible}
+        onClose={() => setAlertVisible(false)}
+      />
       <View className="mx-auto w-full px-5 pt-5">
         <TouchableOpacity onPress={handleAllAgreementToggle}>
           <View className="flex-row">

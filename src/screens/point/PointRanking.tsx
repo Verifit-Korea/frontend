@@ -1,11 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {View, Alert, Text, StyleSheet, FlatList} from 'react-native';
+import {View, Alert, Text, StyleSheet, ScrollView} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../navigation/AppNavigatior';
-import Layout from './layout.tsx';
+import Layout from './layout_ranking.tsx';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Ranking'>;
 
@@ -65,31 +65,44 @@ const RankingScreen: React.FC<Props> = () => {
   );
 
   return (
-    <Layout headerTitle={'랭킹'}>
-      <View style={styles.listContainer}>
-        <View style={styles.rankingBox}>
-          <Text style={styles.title}>이번 시즌 랭킹</Text>
-          {thisSeasonData.map(item => (
-            <LeaderboardItem key={item.id} {...item} />
-          ))}
+    <Layout>
+      <Text style={styles.headerTitle}>랭킹</Text>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.listContainer}>
+          <View style={styles.rankingBox}>
+            <Text style={styles.title}>이번 시즌 랭킹</Text>
+            {thisSeasonData.map(item => (
+              <LeaderboardItem key={item.id} {...item} />
+            ))}
+          </View>
+          <View style={{height: 35}} />
+          <View style={styles.rankingBox}>
+            <Text style={styles.title}>총 포인트 랭킹</Text>
+            {totalPointsData.map(item => (
+              <LeaderboardItem key={item.id} {...item} />
+            ))}
+          </View>
         </View>
-        <View style={{height: 40}} />
-        <View style={styles.rankingBox}>
-          <Text style={styles.title}>총 포인트 랭킹</Text>
-          {totalPointsData.map(item => (
-            <LeaderboardItem key={item.id} {...item} />
-          ))}
-        </View>
-      </View>
+      </ScrollView>
     </Layout>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollView: {
+    marginHorizontal: 2,
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000000',
+    margin: 20,
+    textAlign: 'center',
+  },
   listContainer: {
     marginHorizontal: 50,
     alignItems: 'center',
-    marginVertical: 50,
+    marginVertical: 8,
   },
   rankingBox: {
     width: '100%',

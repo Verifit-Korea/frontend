@@ -10,6 +10,7 @@ import SocialLoginPage from '../screens/auth/SocialLoginPage.tsx';
 import Home from '../screens/Home.tsx';
 import Point from '../screens/point/Point.tsx';
 import Ranking from '../screens/point/PointRanking.tsx';
+import MainPage from '../screens/main/MainPage.tsx';
 
 export type RootStackParamList = {
   SocialPage: undefined;
@@ -21,6 +22,7 @@ export type RootStackParamList = {
   Home: undefined;
   Point: undefined;
   Ranking: undefined;
+  MainPage: undefined;
 };
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -71,6 +73,11 @@ const AppNavigator = () => {
         <Stack.Screen
           name="Ranking"
           component={Ranking}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="MainPage"
+          component={MainPage}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

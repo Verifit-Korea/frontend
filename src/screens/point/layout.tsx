@@ -1,19 +1,20 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, View, StyleSheet} from 'react-native';
 
-import MainHeader from '../../components/UI/MainHeader.tsx';
+import MainHeader from './header.tsx';
 
 type RootLayoutProps = {
   headerTitle?: string;
   children: React.ReactNode;
+  leftButton?: boolean;
 };
 
-const Layout = ({children, headerTitle}: RootLayoutProps) => {
+const Layout = ({children, headerTitle, leftButton}: RootLayoutProps) => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <MainHeader
         title={headerTitle || '포인트'}
-        TextClassName="text-[20px] font-bold text-black" 
+        leftIconOnClick={leftButton}
       />
       <ScrollView
         style={styles.scrollView}

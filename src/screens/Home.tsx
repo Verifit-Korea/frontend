@@ -9,6 +9,7 @@ import Auction from '../assets/images/icons/auction.svg'
 import SettingIcon from '../assets/images/icons/settingIcon.svg'
 import MainPage from "./main/MainPage.tsx";
 import Ranking from "./point/PointRanking.tsx";
+import Point from './point/Point.tsx';
 const Home = () => {
     const Tab = createMaterialBottomTabNavigator();
     return (
@@ -46,7 +47,7 @@ const Home = () => {
                         <CertificationMenu width={42}/>
                     )
                 }} />
-                <Tab.Screen name="경매" component={Setting} options={{
+                <Tab.Screen name="경매" component={Point} options={{
                     tabBarLabel: '경매',
                     tabBarIcon: ({ color }) => (
                         <Auction width={42}/>
