@@ -12,9 +12,7 @@ interface Props {
 }
 
 const MainHeader: FC<Props> = ({title, headerClassName, TextClassName, leftIconOnClick}) => {
-
     const navigation = useNavigation()
-
     return (
         <View className={'flex-row items-center w-full py-[25px]'}>
             {leftIconOnClick &&
