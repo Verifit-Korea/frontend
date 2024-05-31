@@ -1,42 +1,32 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import Layout from "./layout.tsx";
 
 import BgBlackLogo from "../../assets/images/logo/bgBlackLogo.svg"
 import VerifitLogoNeon from "../../assets/images/logo/VerifitLogoNeon.svg"
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigatior.tsx";
+import {Colors} from "react-native/Libraries/NewAppScreen";
 type Props = NativeStackScreenProps<RootStackParamList, 'SocialPage'>;
 const SocialLoginPage = ({navigation} : Props) => {
     return (
-        <Layout header={false}>
-            <View style={[styles.container , {
-                paddingTop : 103
-            }]}>
-                <BgBlackLogo width={170}/>
+        <View style={{flex : 1,backgroundColor : Colors.black, alignItems: 'center'}}>
+            <View style={{justifyContent : 'center' , alignItems: 'center' , paddingTop : 103}}>
+                <BgBlackLogo width={170} height={170}/>
                 <Text style={[styles.text,{fontSize: 20, paddingBottom : 10}]}>
                     <Text style={{fontWeight : "bold"}}>모든 순간</Text>을
                     <Text style={{fontWeight : "bold"}}>핏</Text>하게,
                 </Text>
                 <VerifitLogoNeon/>
             </View>
-
-
-            <View style={[styles.container , {
-                paddingTop : 152
-            }]}>
+            <View style={{
+                alignItems : 'center',
+                position : 'absolute',
+                bottom : 50
+            }}>
                 <View style={styles.imageContainer}>
                     <Image
                         style={styles.image}
                         source={require('../../assets/images/logo/kakaoButtonLogo.png')}
-                        resizeMode="cover"
-                    />
-                </View>
-
-                <View style={styles.imageContainer}>
-                    <Image
-                        style={styles.image}
-                        source={require('../../assets/images/logo/naverButtomLogo.png')}
                         resizeMode="cover"
                     />
                 </View>
@@ -68,7 +58,7 @@ const SocialLoginPage = ({navigation} : Props) => {
                     </TouchableOpacity>
                 </View>
             </View>
-        </Layout>
+        </View>
     );
 };
 
@@ -78,7 +68,6 @@ const styles = StyleSheet.create({
         color : "white"
     },
     container: {
-        flex: 1,
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
