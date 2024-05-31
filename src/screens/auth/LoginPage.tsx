@@ -11,15 +11,13 @@ import CustomAlert from '../../components/UI/CustomAlert.tsx';
 type Props = NativeStackScreenProps<RootStackParamList, 'LoginPage'>;
 
 // export const goAlert = (title: string, message: string) =>
-//   Alert.alert(title, message, [], {cancelable: true});
-  
+//     Alert.alert(title, message, [], {cancelable: true});
 
 const LoginPage = ({navigation}: Props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [alertVisible, setAlertVisible] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
-
   const goAlert = (message: string) => {
     setAlertMessage(message);
     setAlertVisible(true);
@@ -39,7 +37,7 @@ const LoginPage = ({navigation}: Props) => {
       }
       return goAlert('로그인 실패');
     } catch (e) {
-      return goAlert(`${e}`);
+      return goAlert('로그인 실패');
     }
   };
 
@@ -88,7 +86,7 @@ const LoginPage = ({navigation}: Props) => {
             TextClassName={'text-center text-[#0C0C0C] text-[20px] font-bold'}
             onPress={async () => {
               if (!(email && password)) {
-                return goAlert('로그인 실패', '님 뭐 입력 안한듯?');
+                return goAlert('로그인 실패');
               }
               await handleLogin();
             }}
