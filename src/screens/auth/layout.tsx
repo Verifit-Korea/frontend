@@ -12,13 +12,8 @@ type RootLayoutProps = {
 
 const Layout = ({ header = true, children, headerTitle, leftButton }: RootLayoutProps ) => {
     return (
-<<<<<<< 25-alert-chart-category
         <SafeAreaView className={'bg-black h-full w-full'}>
             {header && <MainHeader title={headerTitle || '로그인'} TextClassName={'text-[20px] font-bold'} leftIconOnClick={leftButton}/>}
-=======
-        <SafeAreaView className={'bg-black h-screen w-full'}>
-            {header && <MainHeader title={headerTitle || '로그인'} TextClassName={'text-[20px] font-bold'}/>}
->>>>>>> main
             <ScrollView contentInsetAdjustmentBehavior="automatic">
                 <View>
                     {children}

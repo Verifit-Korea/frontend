@@ -54,6 +54,7 @@ const PointChart: React.FC<PointChartProps> = ({data, timeframe}) => {
       chartConfig={getChartConfig(data, timeframe)}
       yAxisLabel=""
       xAxisLabel=""
+      yAxisSuffix="" // Add this line
       style={styles.chartStyle}
     />
   );

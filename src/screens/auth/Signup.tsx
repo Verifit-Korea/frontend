@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {FC, useState} from 'react';
+import React, {useState} from 'react';
 import {
   Alert,
   SafeAreaView,
@@ -10,10 +10,6 @@ import {
   View,
 } from 'react-native';
 import MainInput from '../../components/UI/MainInput.tsx';
-<<<<<<< 25-alert-chart-category
-import GradientButton from '../../components/UI/buttons/GradientButton.tsx';
-=======
->>>>>>> main
 import CheckBox from '@react-native-community/checkbox';
 import Layout from './layout.tsx';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -21,15 +17,10 @@ import axios from 'axios';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../navigation/AppNavigatior.tsx';
 import SignupLoading from './SignupLoading';
-import GradientButton from "../../components/UI/buttons/GradientButton.tsx";
+import GradientButton from '../../components/UI/buttons/GradientButton';
+import CustomAlert from '../../components/UI/CustomAlert';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'SignupPage'>;
-
-<<<<<<< 25-alert-chart-category
-const SignUp: React.FC<Props> = ({navigation}: Props) => {
-=======
-const SignUp:FC<Props> = ({navigation}: Props) => {
->>>>>>> main
+const SignUp: React.FC = ({navigation}: Props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -56,7 +47,6 @@ const SignUp:FC<Props> = ({navigation}: Props) => {
   const passwordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
-
 
   const handleAllAgreementToggle = () => {
     setIsAllAgreed(!isAllAgreed);
@@ -163,11 +153,11 @@ const SignUp:FC<Props> = ({navigation}: Props) => {
   return (
     <Layout headerTitle={'회원가입'} leftButton={true}>
       <SignupLoading visible={loading} />
-      {/*<CustomAlert*/}
-      {/*  message={alertMessage}*/}
-      {/*  visible={alertVisible}*/}
-      {/*  onClose={() => setAlertVisible(false)}*/}
-      {/*/>*/}
+      <CustomAlert
+        message={alertMessage}
+        visible={alertVisible}
+        onClose={() => setAlertVisible(false)}
+      />
       <View className="mx-auto w-full px-5 pt-5">
         <TouchableOpacity onPress={handleAllAgreementToggle}>
           <View className="flex-row">
