@@ -11,6 +11,7 @@ import MyPage from "../screens/myPage/MyPage.tsx";
 import RankingScreen from "../screens/point/PointRanking.tsx";
 import NegativeCheck from "../screens/main/checkList/NegativeCheck.tsx";
 import AuctionPage from "../screens/auction/AuctionPage.tsx";
+import Guideline from "../screens/camera/guideline.tsx"
 const BottomNavigation = () => {
     const Tab = createMaterialBottomTabNavigator();
     return (
@@ -42,7 +43,7 @@ const BottomNavigation = () => {
                     <Rank width={42}/>
                 )
             }} />
-            <Tab.Screen name="인증" component={Setting} options={{
+            <Tab.Screen name="인증" component={Guideline} options={{
                 tabBarLabel: '인증',
                 tabBarIcon: ({ color }) => (
                     <CertificationMenu width={42}/>

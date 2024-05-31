@@ -10,6 +10,10 @@ import {
   View,
 } from 'react-native';
 import MainInput from '../../components/UI/MainInput.tsx';
+<<<<<<< 25-alert-chart-category
+import GradientButton from '../../components/UI/buttons/GradientButton.tsx';
+=======
+>>>>>>> main
 import CheckBox from '@react-native-community/checkbox';
 import Layout from './layout.tsx';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -21,7 +25,11 @@ import GradientButton from "../../components/UI/buttons/GradientButton.tsx";
 
 type Props = NativeStackScreenProps<RootStackParamList, 'SignupPage'>;
 
+<<<<<<< 25-alert-chart-category
+const SignUp: React.FC<Props> = ({navigation}: Props) => {
+=======
 const SignUp:FC<Props> = ({navigation}: Props) => {
+>>>>>>> main
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -153,7 +161,7 @@ const SignUp:FC<Props> = ({navigation}: Props) => {
   };
 
   return (
-    <Layout headerTitle={'회원가입'}>
+    <Layout headerTitle={'회원가입'} leftButton={true}>
       <SignupLoading visible={loading} />
       {/*<CustomAlert*/}
       {/*  message={alertMessage}*/}

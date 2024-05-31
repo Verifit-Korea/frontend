@@ -11,8 +11,13 @@ import GradientButton from "../../components/UI/buttons/GradientButton.tsx";
 import useAuthStore from "../../store/authStore.ts";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigatior.tsx";
+<<<<<<< 25-alert-chart-category
+import MyDataLoading from "./MyDataLoading.tsx";
+
+=======
 import MainHeader from "../../components/UI/headers/MainHeader.tsx";
 import {Colors} from "react-native/Libraries/NewAppScreen";
+>>>>>>> main
 type Props = NativeStackScreenProps<RootStackParamList, 'MyData'>;
 
 const MyData = ({navigation}: Props) => {
@@ -22,6 +27,7 @@ const MyData = ({navigation}: Props) => {
         nickName: authStore.nickname,
         email: authStore.email,
     })
+    const [loading, setLoading] = useState(false)
     return (
         <View style={styles.main_container}>
             <MainHeader leftIconOnClick={true} title={'내정보'} TextClassName={'text-[20px] font-bold'}/>

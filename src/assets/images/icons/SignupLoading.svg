@@ -26,18 +26,18 @@
 <defs>
 <linearGradient id="paint0_linear_4011_91" x1="125" y1="186" x2="247" y2="186" gradientUnits="userSpaceOnUse">
 <stop offset="0%" stop-color="#DCFF00">
-<animate attributeName="stop-color" values="#DCFF00;#00A9FF;#DCFF00" dur="2s" repeatCount="indefinite"/>
+<animate attributeName="stop-color" values="#DCFF00;#00A9FF;#DCFF00" dur="1s" repeatCount="indefinite"/>
 </stop>
 <stop offset="100%" stop-color="#00A9FF">
-<animate attributeName="stop-color" values="#00A9FF;#DCFF00;#00A9FF" dur="2s" repeatCount="indefinite"/>
+<animate attributeName="stop-color" values="#00A9FF;#DCFF00;#00A9FF" dur="1s" repeatCount="indefinite"/>
 </stop>
 </linearGradient>
 <linearGradient id="paint1_linear_4011_91" x1="235.481" y1="49.7271" x2="136.027" y2="321.781" gradientUnits="userSpaceOnUse">
 <stop offset="0%" stop-color="#DCFF00">
-<animate attributeName="stop-color" values="#DCFF00;#00A9FF;#DCFF00" dur="2s" repeatCount="indefinite"/>
+<animate attributeName="stop-color" values="#DCFF00;#00A9FF;#DCFF00" dur="1s" repeatCount="indefinite"/>
 </stop>
 <stop offset="100%" stop-color="#00A9FF">
-<animate attributeName="stop-color" values="#00A9FF;#DCFF00;#00A9FF" dur="2s" repeatCount="indefinite"/>
+<animate attributeName="stop-color" values="#00A9FF;#DCFF00;#00A9FF" dur="1s" repeatCount="indefinite"/>
 </stop>
 </linearGradient>
 </defs>
