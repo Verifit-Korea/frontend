@@ -11,6 +11,8 @@ import GradientButton from "../../components/UI/buttons/GradientButton.tsx";
 import useAuthStore from "../../store/authStore.ts";
 import {NativeStackScreenProps} from "@react-navigation/native-stack";
 import {RootStackParamList} from "../../navigation/AppNavigatior.tsx";
+import MyDataLoading from "./MyDataLoading.tsx";
+
 type Props = NativeStackScreenProps<RootStackParamList, 'MyData'>;
 
 const MyData = ({navigation}: Props) => {
@@ -19,6 +21,7 @@ const MyData = ({navigation}: Props) => {
         nickName: authStore.nickname,
         email: authStore.email,
     })
+    const [loading, setLoading] = useState(false)
     return (
         <Layout leftButton={true} headerTitle={'내 정보'}>
             <View className={'mx-auto pt-14'}>

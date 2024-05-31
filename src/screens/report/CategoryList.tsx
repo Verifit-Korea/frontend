@@ -14,9 +14,9 @@ import {
 const CategoryCard = ({title, details}) => {
   const [expanded, setExpanded] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
-  const animation = useRef(new Animated.Value(55)).current; 
+  const animation = useRef(new Animated.Value(55)).current;
 
-  const maxHeight = 300; 
+  const maxHeight = 300;
 
   const toggleExpansion = () => {
     setExpanded(!expanded);
@@ -53,7 +53,6 @@ const CategoryCard = ({title, details}) => {
           <Text style={styles.title}>{title}</Text>
         </View>
         <ScrollView
-          // eslint-disable-next-line react-native/no-inline-styles
           style={{flexGrow: 0, maxHeight: maxHeight - 55}}
           scrollEnabled={expanded}
           onContentSizeChange={onContentSizeChange}>
@@ -61,7 +60,7 @@ const CategoryCard = ({title, details}) => {
             {details.map(
               (
                 detail: {text: any; imageUrl: any},
-                index: React.Key | null | undefined,
+                index: React.Key | null | undefined,   //index의 값은 비어있을수도 있음
               ) => (
                 <DetailCard
                   key={index}
@@ -79,7 +78,6 @@ const CategoryCard = ({title, details}) => {
 
 const DetailCard = ({text, imageUrl}) => {
   const [modalVisible, setModalVisible] = useState(false);
-
   return (
     <View style={styles.detailCard}>
       <Text style={styles.detailText}>{text}</Text>
@@ -103,17 +101,6 @@ const DetailCard = ({text, imageUrl}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white',
-    borderRadius: 8,
-    padding: 13,
-    margin: 13,
-    overflow: 'hidden',
-    height: 'auto',
-    width: '100%',
-    border: 'black',
-    borderWidth: 1,
-  },
   card: {
     backgroundColor: 'black',
     borderRadius: 8,
@@ -136,11 +123,6 @@ const styles = StyleSheet.create({
     margin: 5,
     flex: 1,
   },
-  // details: {
-  //   marginTop: 8,
-  //   fontSize: 14,
-  //   color: 'gray',
-  // },
   headerTitle: {
     fontSize: 18,
     fontWeight: 'bold',

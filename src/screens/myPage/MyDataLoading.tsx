@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {Image, View, Modal, StyleSheet, Dimensions} from 'react-native';
-import Loading from '../../assets/images/icons/SignupLoading.svg';
+import {View, Modal, StyleSheet, Dimensions} from 'react-native';
+import Loading from '../../assets/images/icons/ChangeLoading.svg';
 
-interface SignupLoadingProps {
+interface MyDataLoadingProps {
   visible: boolean;
 }
 
-const SignupLoading: React.FC<SignupLoadingProps> = ({visible}) => {
+const MyDataLoading: React.FC<MyDataLoadingProps> = ({visible}) => {
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
@@ -28,11 +28,6 @@ const SignupLoading: React.FC<SignupLoadingProps> = ({visible}) => {
   return (
     <Modal transparent={true} visible={showLoading} animationType="none">
       <View style={styles.overlay}>
-        {/* <Image
-          style={{width: imageWidth, height: imageWidth}}
-          source={require('../../assets/images/icons/SignupLoading.svg')}
-          resizeMode="cover"
-        /> */}
         <Loading style={{width: imageWidth, height: imageWidth}} />
       </View>
     </Modal>
@@ -48,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignupLoading;
+export default MyDataLoading;
