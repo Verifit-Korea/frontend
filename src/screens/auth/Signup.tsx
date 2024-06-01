@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {
   Alert,
   SafeAreaView,
@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import MainInput from '../../components/UI/MainInput.tsx';
+import GradientButton from '../../components/UI/buttons/GradientButton.tsx';
 import CheckBox from '@react-native-community/checkbox';
 import Layout from './layout.tsx';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,10 +18,10 @@ import axios from 'axios';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../navigation/AppNavigatior.tsx';
 import SignupLoading from './SignupLoading';
-import GradientButton from '../../components/UI/buttons/GradientButton';
-import CustomAlert from '../../components/UI/CustomAlert';
+import CustomAlert from '../../components/UI/CustomAlert.tsx';
+type Props = NativeStackScreenProps<RootStackParamList, 'SignupPage'>;
 
-const SignUp: React.FC = ({navigation}: Props) => {
+const SignUp: React.FC<Props> = ({navigation}: Props) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
